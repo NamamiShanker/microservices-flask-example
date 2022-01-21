@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "content"
+version = "0.1.0"
+description = ""
+authors = ["Namami Shanker <namami2011@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Flask = "^2.0.2"
+Flask-Migrate = "^3.1.0"
+Flask-SQLAlchemy = "^2.5.1"
+psycopg2-binary = "^2.9.3"
+marshmallow = "^3.14.1"
+requests = "^2.27.1"
+gunicorn = "^20.1.0"
+SQLAlchemy = "^1.4.30"
+celery = "^5.2.3"
+redis = "^4.1.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

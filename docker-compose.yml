@@ -1,0 +1,84 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+      - ./data/pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_MULTIPLE_DATABASES=userdb,interactiondb,contentdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5400:5432"
+    restart: always
+    networks:
+      - default
+
+  redis:
+    image: redis
+    container_name: redis
+    expose:
+      - "6379"
+    restart: always
+    networks:
+      - default
+
+  user_api:
+    build:
+      context: ./users
+      dockerfile: Dockerfile
+    image: user_api
+    volumes:
+      - ./users:/usr/src/app
+    environment:
+      - FLASK_APP=manage.py
+    depends_on:
+      - db
+      - redis
+    expose:
+      - "5000"
+    ports:
+      - "5001:5000"
+    command: ["bash", "start-Docker.sh"]
+    networks:
+      - default
+
+  content_api:
+    build:
+      context: ./content
+      dockerfile: Dockerfile
+    image: content_api
+    volumes:
+      - ./content:/usr/src/app
+    environment:
+      - FLASK_APP=manage.py
+    depends_on:
+      - db
+      - redis
+    expose:
+      - "5000"
+    ports:
+      - "5002:5000"
+    command: ["bash", "start-Docker.sh"]
+    networks:
+      - default
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: nginx
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - user_api
+      - content_api
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge

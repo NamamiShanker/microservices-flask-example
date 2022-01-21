@@ -1,0 +1,7 @@
+FLASK_APP=manage.py
+ENVIRONMENT=development
+FLASK_ENV=development
+SQLALCHEMY_TRACK_MODIFICATIONS=false
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@db:5432/userdb
+DATABASE_URI=postgresql://postgres:postgres@db:5432/userdb
+APP_SETTINGS=config.DevelopmentConfig
