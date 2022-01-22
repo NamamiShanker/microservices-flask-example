@@ -2,8 +2,8 @@ from marshmallow import Schema, fields
 
 
 class BaseContent(Schema):
-    title = fields.Str(required=True)
-    story = fields.Str(required=True)
+    title = fields.Str()
+    story = fields.Str()
 
 
 class ContentOut(BaseContent):
