@@ -30,7 +30,6 @@ services:
     build:
       context: ./users
       dockerfile: Dockerfile
-    image: user_api
     container_name: user_api
     volumes:
       - ./users:/usr/src/app
@@ -51,7 +50,6 @@ services:
     build:
       context: ./content
       dockerfile: Dockerfile
-    image: content_api
     container_name: content_api
     volumes:
       - ./content:/usr/src/app
@@ -72,7 +70,6 @@ services:
     build:
       context: ./interaction
       dockerfile: Dockerfile
-    image: interation_api
     container_name: interaction_api
     volumes:
       - ./interaction:/usr/src/app
@@ -93,9 +90,8 @@ services:
     build:
       context: ./nginx
       dockerfile: Dockerfile
-    image: nginx
     container_name: nginx
-    restart: always
+    # restart: always
     ports:
       - "8080:80"
     depends_on:
