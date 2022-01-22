@@ -13,16 +13,19 @@ from .service import (
     delete_content_by_id,
     update_content_by_id,
     allowed_file,
+    get_sorted_content_by_date,
+    get_sorted_content_by_reads
 )
 from .schema import (
     all_contents_schema,
     create_content_schema,
     content_out_schema,
     update_content_schema,
+    sorted_content_schema
 )
 
 from project.lib import BadRequest, ServerError
-from project.tasks import divide, ingest_csv_task
+from project.tasks import ingest_csv_task
 
 contents_blueprint = Blueprint("contents", __name__)
 
@@ -127,6 +130,25 @@ def ingest_csv():
         ingest_csv_task.apply_async(args=[file_path])
         return "File uploaded successfully", 200
 
+def get_sorted_contents():
+    try:
+        data = request.get_json()
+        u = sorted_content_schema.load(data)
+        if u["sort_by"] == 'date':
+            print("Sort by date")
+            content = get_sorted_content_by_date(u["order"])
+            resp = all_contents_schema.dump(content)
+        elif u["sort_by"] == 'reads':
+            print("Sort by reads")
+            content = get_sorted_content_by_reads(u["order"])
+            resp = all_contents_schema.dump(content)
+    except ValidationError as err:
+        raise BadRequest(message=err.messages, status=422)
+    except BadRequest as err:
+        raise BadRequest(message=err.message, status=err.status)
+    except Exception as e:
+        raise ServerError(message=str(e), status=500)
+    return {"content": resp}, 200
 
 contents_blueprint.add_url_rule(
     "/contents",
@@ -142,4 +164,8 @@ contents_blueprint.add_url_rule(
 
 contents_blueprint.add_url_rule(
     "/ingest", view_func=ingest_csv, methods=["POST"]
+)
+
+contents_blueprint.add_url_rule(
+    "/sorted", view_func=get_sorted_contents, methods=["POST"]
 )
