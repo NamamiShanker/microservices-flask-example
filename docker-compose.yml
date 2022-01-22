@@ -68,6 +68,27 @@ services:
     networks:
       - default
 
+  interaction_api:
+    build:
+      context: ./interaction
+      dockerfile: Dockerfile
+    image: interation_api
+    container_name: interaction_api
+    volumes:
+      - ./interaction:/usr/src/app
+    environment:
+      - FLASK_APP=manage.py
+    depends_on:
+      - db
+      - redis
+    expose:
+      - "5000"
+    ports:
+      - "5003:5000"
+    command: ["bash", "start-Docker.sh"]
+    networks:
+      - default
+
   nginx:
     build:
       context: ./nginx
