@@ -3,6 +3,7 @@ version: "3.7"
 services:
   db:
     image: postgres
+    container_name: db
     volumes:
       - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
       - ./data/pgdata:/var/lib/postgresql/data
@@ -30,6 +31,7 @@ services:
       context: ./users
       dockerfile: Dockerfile
     image: user_api
+    container_name: user_api
     volumes:
       - ./users:/usr/src/app
     environment:
@@ -50,6 +52,7 @@ services:
       context: ./content
       dockerfile: Dockerfile
     image: content_api
+    container_name: content_api
     volumes:
       - ./content:/usr/src/app
     environment:
@@ -70,6 +73,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     image: nginx
+    container_name: nginx
     restart: always
     ports:
       - "8080:80"
