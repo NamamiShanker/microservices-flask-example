@@ -5,8 +5,8 @@ from flask import Blueprint, request
 from flask.views import MethodView
 from marshmallow import ValidationError
 
-from .service import create_new_like, get_all_likes, get_like_by_id, get_likes_by_content_id
-from .schema import all_likes_schema, create_like_schema, like_out_schema
+from .service import create_new_like, get_all_likes, get_like_by_id, get_user_likes_by_content_id, get_user_likes_by_content_id_bulk
+from .schema import all_likes_schema, create_like_schema, like_out_schema, id_list_schema
 
 from project.lib import BadRequest, ServerError
 
@@ -62,6 +62,32 @@ class LikesView(MethodView):
 		else:
 			return {"like": resp}, 200
 
+def get_likes_by_content_id(content_id: UUID):
+	"""Get all likes by content id"""
+	try:
+		resp = get_user_likes_by_content_id(content_id)
+	except BadRequest as err:
+		raise BadRequest(message=err.message, status=err.status)
+	except Exception as e:
+		raise ServerError(message=str(e), status=500)
+	else:
+		return {"user_list": resp}, 200
+
+def get_likes_by_content_id_bulk():
+	"""Get all likes by content id"""
+	try:
+		data = request.get_json()
+		ids = id_list_schema.load(data)
+		resp = get_user_likes_by_content_id_bulk(ids["ids"])
+	except ValidationError as err:
+		raise BadRequest(message=str(err), status=422)
+	except BadRequest as err:
+		raise BadRequest(message=err.message, status=err.status)
+	except Exception as e:
+		raise ServerError(message=str(e), status=500)
+	else:
+		return {"content_list": resp}, 200
+
 likes_blueprint.add_url_rule(
 	"/likes",
 	view_func=LikesList.as_view("likes_list"),
@@ -72,4 +98,18 @@ likes_blueprint.add_url_rule(
 	"/likes/<uuid:like_id>",
 	view_func=LikesView.as_view("like"),
 	methods=["GET"],
+)
+
+likes_blueprint.add_url_rule(
+	"/likes/content/<uuid:content_id>",
+	"get_likes_by_content_id",
+	get_likes_by_content_id,
+	methods=["GET"],
+)
+
+likes_blueprint.add_url_rule(
+	"/likes/content/bulk",
+	"get_likes_by_content_id_bulk",
+	get_likes_by_content_id_bulk,
+	methods=["POST"],
 )

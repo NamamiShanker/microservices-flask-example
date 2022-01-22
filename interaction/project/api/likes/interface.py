@@ -37,7 +37,7 @@ class LikeInterface:
 		likes_db = LikeDB.get_all({"content_id": content_id})
 		if likes_db:
 			return [cls.interface_creator(like_db) for like_db in likes_db]
-		return None
+		return []
 
 	@classmethod
 	def create_like(cls, like_data: dict):

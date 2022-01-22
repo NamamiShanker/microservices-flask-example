@@ -37,7 +37,7 @@ class ReadInterface:
 		reads_db = ReadDB.get_all({"content_id": content_id})
 		if reads_db:
 			return [cls.interface_creator(read_db) for read_db in reads_db]
-		return None
+		return []
 
 	@classmethod
 	def create_read(cls, read_data: dict):
