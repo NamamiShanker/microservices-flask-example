@@ -1,0 +1,8 @@
+FLASK_APP=manage.py
+ENVIRONMENT=development
+FLASK_ENV=development
+SQLALCHEMY_TRACK_MODIFICATIONS=false
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@db:5432/interactiondb
+DATABASE_URI=postgresql://postgres:postgres@db:5432/interactiondb
+APP_SETTINGS=config.DevelopmentConfig
+USER_API_URL=http://user_api:5000
