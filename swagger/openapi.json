@@ -1,0 +1,697 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "API",
+    "description": "Swagger documentation for the assignment API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "User",
+      "description": "CRUD operations for users"
+    },
+    {
+      "name": "Content",
+      "description": "CRUD and sorting operations for content"
+    },
+    {
+      "name": "Interaction",
+      "description": "Interaction operations for content"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "UserCreate": {
+        "type": "object",
+        "properties": {
+          "email_id": {
+            "type": "string",
+            "format": "email"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          }
+        }
+      },
+      "Content": {
+        "type": "object",
+        "properties": {
+          "content_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "story": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ContentCreate": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "pattern": "([0-9]{2})-(?:[0-9]{2})-([0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2})",
+            "example": "01-01-2020 00:00:00"
+          },
+          "story": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "ContentUpdate": {
+        "type": "object",
+        "properties": {
+          "story": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "SortRequest": {
+        "type": "object",
+        "properties": {
+          "sort_by": {
+            "type": "string",
+            "enum": [
+              "date",
+              "reads",
+              "likes"
+            ],
+            "required": true
+          },
+          "order": {
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "required": true
+          }
+        }
+      },
+      "ReadCreate": {
+        "type": "object",
+        "properties": {
+          "content_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "Read": {
+        "type": "object",
+        "properties": {
+          "read_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "LikeCreate": {
+        "type": "object",
+        "properties": {
+          "content_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "Like": {
+        "type": "object",
+        "properties": {
+          "read_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "content_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/user_api/users": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "A list of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "users_list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/User"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The user was created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "$ref": "#/components/schemas/User"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user_api/users/{user_id}": {
+      "get": {
+        "summary": "Get a user",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "The ID of the user to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user was retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a user",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "The ID of the user to update",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The user was updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user",
+        "tags": [
+          "user"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "The ID of the user to delete",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The user was deleted"
+          }
+        }
+      }
+    },
+    "/content_api/contents": {
+      "get": {
+        "summary": "Get all content",
+        "tags": [
+          "content"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "content_list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Content"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new content",
+        "tags": [
+          "content"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContentCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The content was created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "$ref": "#/components/schemas/Content"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/content_api/contents/{content_id}": {
+      "get": {
+        "summary": "Get a content",
+        "tags": [
+          "content"
+        ],
+        "parameters": [
+          {
+            "name": "content_id",
+            "in": "path",
+            "description": "The ID of the content to retrieve",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The content was retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Content"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a content",
+        "tags": [
+          "content"
+        ],
+        "parameters": [
+          {
+            "name": "content_id",
+            "in": "path",
+            "description": "The ID of the content to update",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContentCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The content was updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Content"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a content",
+        "tags": [
+          "content"
+        ],
+        "parameters": [
+          {
+            "name": "content_id",
+            "in": "path",
+            "description": "The ID of the content to delete",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The content was deleted"
+          }
+        }
+      }
+    },
+    "/content_api/ingest": {
+      "post": {
+        "summary": "Ingest a csv file of contents",
+        "tags": [
+          "content"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/content_api/sorted": {
+      "post": {
+        "summary": "Get content sorted by a field",
+        "tags": [
+          "content"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SortRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The content was sorted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "content_list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Content"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/interaction_api/reads": {
+      "get": {
+        "summary": "Get all reads",
+        "tags": [
+          "read"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of reads",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "read_list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Read"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new read",
+        "tags": [
+          "read"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReadCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The read was created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "read": {
+                      "$ref": "#/components/schemas/Read"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "interaction_api/likes": {
+      "get": {
+        "summary": "Get all likes",
+        "tags": [
+          "like"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of likes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "like_list": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Like"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new like",
+        "tags": [
+          "like"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LikeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The like was created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "like": {
+                      "$ref": "#/components/schemas/Like"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
