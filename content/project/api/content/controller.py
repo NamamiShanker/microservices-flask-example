@@ -14,7 +14,7 @@ from .service import (
     update_content_by_id,
     allowed_file,
     get_sorted_content_by_date,
-    get_sorted_content_by_reads
+    get_sorted_content_by_reads_or_likes
 )
 from .schema import (
     all_contents_schema,
@@ -135,13 +135,10 @@ def get_sorted_contents():
         data = request.get_json()
         u = sorted_content_schema.load(data)
         if u["sort_by"] == 'date':
-            print("Sort by date")
             content = get_sorted_content_by_date(u["order"])
-            resp = all_contents_schema.dump(content)
-        elif u["sort_by"] == 'reads':
-            print("Sort by reads")
-            content = get_sorted_content_by_reads(u["order"])
-            resp = all_contents_schema.dump(content)
+        else:
+            content = get_sorted_content_by_reads_or_likes(u["sort_by"], u["order"])
+        resp = all_contents_schema.dump(content)
     except ValidationError as err:
         raise BadRequest(message=err.messages, status=422)
     except BadRequest as err:

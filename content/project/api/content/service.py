@@ -42,21 +42,24 @@ def ingest_json_content(data: list):
     ContentInterface.create_bulk_content(data)
 
 def get_sorted_content_by_date(order_by: str = "desc"):
-    print("In service")
-    sorted = ContentInterface.get_sorted_content_by_date(order_by)
-    print("Sorted:", sorted)
-    return sorted
+    return ContentInterface.get_sorted_content_by_date(order_by)
 
-def get_sorted_content_by_reads(order_by: str = "desc"):
+def get_sorted_content_by_reads_or_likes(sort_by: str = "reads", order_by: str = "desc"):
     contents = get_all_contents()
-    content_ids = [content.content_id for content in contents]
-    reads = get_read_list_by_content_id_list(content_ids)
-    print("Reads:", reads)
-    for content in reads['content_list']:
-        reads['content_list'][content] = len(reads['content_list'][content])
-    print("Reads", reads)
+    print("Contents: ", contents)
+    content_ids = [str(content.content_id) for content in contents]
+    print("Content ids: ", content_ids)
+    reads = get_read_list_by_content_id_list(content_ids)['content_list'] if sort_by == "reads" else get_like_list_by_content_id_list(content_ids)['content_list']
+    print("Reads User IDs: ", reads)
+    for content in reads:
+        reads[content] = len(reads[content])
+    print("Reads Lengths: ", reads)
     sorted_reads = dict(sorted(reads.items(), key=lambda item: item[1]))
+    print("Sorted Reads: ", sorted_reads)
     return [
+        ContentInterface.get_content_by_id(content_id)
+        for content_id in sorted_reads
+    ][::-1] if order_by == "desc" else [
         ContentInterface.get_content_by_id(content_id)
         for content_id in sorted_reads
     ]
