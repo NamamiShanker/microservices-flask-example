@@ -10,9 +10,21 @@
 			"item": [
 				{
 					"name": "Get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content_id\": \"a75aaad0-3dda-405f-b41b-426dc39bdbe9\",\n    \"user_id\": \"75487e7d-38e2-4688-8ba5-4a86af194303\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{BaseURI}}/user_api/users",
 							"host": [
@@ -603,7 +615,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"date\": \"19-01-2022 23:32:00\"\n}",
+							"raw": "{\n   \"title\": \"Halfway There\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -685,14 +697,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BaseURI}}/content_api/contents/b1ea604d-f8ee-4d62-87c7-814450b3bca6",
+							"raw": "{{BaseURI}}/content_api/contents/25726eab-98da-4beb-942b-97140243dc54",
 							"host": [
 								"{{BaseURI}}"
 							],
 							"path": [
 								"content_api",
 								"contents",
-								"b1ea604d-f8ee-4d62-87c7-814450b3bca6"
+								"25726eab-98da-4beb-942b-97140243dc54"
 							]
 						}
 					},
