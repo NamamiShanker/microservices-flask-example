@@ -1,0 +1,1069 @@
+{
+	"info": {
+		"_postman_id": "00032998-7f8d-4732-bede-49d5d1757d3c",
+		"name": "Pratilipi Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User API",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURI}}/user_api/users",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"user_api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/user_api/users",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"user_api",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 23 Jan 2022 09:07:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "880"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users_list\": [\n        {\n            \"email_id\": \"namami2011@gmail.com\",\n            \"first_name\": \"Namami\",\n            \"last_name\": \"Shanker\",\n            \"phone_number\": \"8840273138\",\n            \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n        },\n        {\n            \"email_id\": \"namami.shanker.19041@iitgoa.ac.in\",\n            \"first_name\": \"Namami\",\n            \"last_name\": \"Shanker\",\n            \"phone_number\": \"8840273139\",\n            \"user_id\": \"ba4ea37b-59c2-4934-b3d3-87036b336342\"\n        },\n        {\n            \"email_id\": \"shubhamgar@example.com\",\n            \"first_name\": \"Shubham\",\n            \"last_name\": \"Garg\",\n            \"phone_number\": \"18645646118\",\n            \"user_id\": \"75487e7d-38e2-4688-8ba5-4a86af194303\"\n        },\n        {\n            \"email_id\": \"donald@example.com\",\n            \"first_name\": \"Donald\",\n            \"last_name\": \"Duck\",\n            \"phone_number\": \"186456118\",\n            \"user_id\": \"2f97d19e-3871-4e5f-9a5c-1af7ded33f45\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURI}}/user_api/users/8446dabc-5b26-40a8-afb8-c3e56e7a989c",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"user_api",
+								"users",
+								"8446dabc-5b26-40a8-afb8-c3e56e7a989c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get user by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/user_api/users/d788a3c1-a858-4313-92fc-1ce56c1bdf5e",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"user_api",
+										"users",
+										"d788a3c1-a858-4313-92fc-1ce56c1bdf5e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:25:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "221"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"email_id\": \"namami.shanker.19041@iitgoa.ac.in\",\n        \"first_name\": \"Namami\",\n        \"last_name\": \"Shanker\",\n        \"phone_number\": \"8840273139\",\n        \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update user by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Richie\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/user_api/users/d788a3c1-a858-4313-92fc-1ce56c1bdf5e",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"user_api",
+								"users",
+								"d788a3c1-a858-4313-92fc-1ce56c1bdf5e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update user by ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/user_api/users/d788a3c1-a858-4313-92fc-1ce56c1bdf5e",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"user_api",
+										"users",
+										"d788a3c1-a858-4313-92fc-1ce56c1bdf5e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:25:38 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "221"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"email_id\": \"namami.shanker.19041@iitgoa.ac.in\",\n        \"first_name\": \"Richie\",\n        \"last_name\": \"Shanker\",\n        \"phone_number\": \"8840273139\",\n        \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create new User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email_id\": \"donald@example.com\",\n    \"first_name\": \"Donald\",\n    \"last_name\": \"Duck\",\n    \"phone_number\": \"186456118\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/user_api/users",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"user_api",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create new User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email_id\": \"namami2011@gmail.com\",\n    \"first_name\": \"Namami\",\n    \"last_name\": \"Shanker\",\n    \"phone_number\": \"8840273138\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/user_api/users",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"user_api",
+										"users"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:24:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "208"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"email_id\": \"namami2011@gmail.com\",\n        \"first_name\": \"Namami\",\n        \"last_name\": \"Shanker\",\n        \"phone_number\": \"8840273138\",\n        \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete user by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURI}}/user_api/users/d788a3c1-a858-4313-92fc-1ce56c1bdf5e",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"user_api",
+								"users",
+								"d788a3c1-a858-4313-92fc-1ce56c1bdf5e"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete user by ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/user_api/users/d788a3c1-a858-4313-92fc-1ce56c1bdf5e",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"user_api",
+										"users",
+										"d788a3c1-a858-4313-92fc-1ce56c1bdf5e"
+									]
+								}
+							},
+							"status": "NO CONTENT",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:26:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Content API",
+			"item": [
+				{
+					"name": "Get all contents",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/content_api/contents",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"content_api",
+								"contents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all contents",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Bon Jovi\",\n    \"story\": \"This aint a song for the broken hearted\",\n    \"date\": \"21-1-2022 23:32:00\",\n    \"user_id\": \"c1796373-2c49-43d5-9c41-8f5d6fe9a46d\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/content_api/contents",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"contents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:30:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "955"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"contents_list\": [\n        {\n            \"content_id\": \"a75aaad0-3dda-405f-b41b-426dc39bdbe9\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"206130c3-c701-4adb-9ba3-609c842150ad\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger and that feels so rough\",\n            \"title\": \"Somebody that I used to know\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create new Content",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Brown Munde\",\n    \"story\": \"Lambo Truck Vich Gedi Seedhi Hollywood Geet Desi Mundeyan De Sune Bollywoodl\",\n    \"date\": \"17-12-2021 23:32:00\",\n    \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/content_api/contents",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"content_api",
+								"contents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create new Content",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Bon Jovi\",\n    \"story\": \"This aint a song for the broken hearted\",\n    \"date\": \"21-1-2022 23:32:00\",\n    \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/content_api/contents",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"contents"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:28:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "255"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": {\n        \"content_id\": \"206130c3-c701-4adb-9ba3-609c842150ad\",\n        \"date\": \"21-01-2022 23:32:00\",\n        \"story\": \"This aint a song for the broken hearted\",\n        \"title\": \"Bon Jovi\",\n        \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get content by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURI}}/content_api/contents/7b65a25a-8c93-4dd7-9dc6-ed2ab215784a",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"content_api",
+								"contents",
+								"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get content by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BaseURI}}/content_api/contents/7b65a25a-8c93-4dd7-9dc6-ed2ab215784a",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"contents",
+										"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:30:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "415"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": {\n        \"content_id\": \"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a\",\n        \"date\": \"21-01-2022 23:32:00\",\n        \"story\": \"But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger and that feels so rough\",\n        \"title\": \"Somebody that I used to know\",\n        \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update content by ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"date\": \"19-01-2022 23:32:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/content_api/contents/b1ea604d-f8ee-4d62-87c7-814450b3bca6",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"content_api",
+								"contents",
+								"b1ea604d-f8ee-4d62-87c7-814450b3bca6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update content by ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Gotye - Somebody that I used to know\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/content_api/contents/7b65a25a-8c93-4dd7-9dc6-ed2ab215784a",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"contents",
+										"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:35:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "423"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": {\n        \"content_id\": \"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a\",\n        \"date\": \"21-01-2022 23:32:00\",\n        \"story\": \"But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger and that feels so rough\",\n        \"title\": \"Gotye - Somebody that I used to know\",\n        \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete content by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURI}}/content_api/contents/b1ea604d-f8ee-4d62-87c7-814450b3bca6",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"content_api",
+								"contents",
+								"b1ea604d-f8ee-4d62-87c7-814450b3bca6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ingest CSV",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "test.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BaseURI}}/content_api/ingest",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"content_api",
+								"ingest"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ingest CSV",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "test.csv"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BaseURI}}/content_api/ingest",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"ingest"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 06:46:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "File uploaded successfully"
+						}
+					]
+				},
+				{
+					"name": "Get sorted content",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sort_by\": \"likes\",\n    \"order\": \"desc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/content_api/sorted",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"content_api",
+								"sorted"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get sorted content by date",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sort_by\": \"date\",\n    \"order\": \"desc\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/content_api/sorted",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"sorted"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 15:41:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2004"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"content_id\": \"a75aaad0-3dda-405f-b41b-426dc39bdbe9\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"206130c3-c701-4adb-9ba3-609c842150ad\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger and that feels so rough\",\n            \"title\": \"Gotye - Somebody that I used to know\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"779a1f24-5bfc-4d35-afb0-f9d6af87c47d\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"Very sad story\",\n            \"title\": \"Highway To Hell\",\n            \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n        },\n        {\n            \"content_id\": \"25726eab-98da-4beb-942b-97140243dc54\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"Very bad story\",\n            \"title\": \"Highway To Bell\",\n            \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n        },\n        {\n            \"content_id\": \"2318a9be-1c06-463a-b3cc-a4f8fac64eac\",\n            \"date\": \"19-01-2022 23:32:00\",\n            \"story\": \"Dil Naal Laare Ni Tu Laun Waliye Dil Tera Jado Tuttuga Taan\",\n            \"title\": \"Excuses\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"295ae414-7810-4293-9bd2-ab938af278f4\",\n            \"date\": \"17-12-2021 23:32:00\",\n            \"story\": \"Lambo Truck Vich Gedi Seedhi Hollywood Geet Desi Mundeyan De Sune Bollywoodl\",\n            \"title\": \"Brown Munde\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get sorted content by reads",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sort_by\": \"reads\",\n    \"order\": \"desc\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/content_api/sorted",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"sorted"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 16:09:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2004"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"content_id\": \"a75aaad0-3dda-405f-b41b-426dc39bdbe9\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger and that feels so rough\",\n            \"title\": \"Gotye - Somebody that I used to know\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"779a1f24-5bfc-4d35-afb0-f9d6af87c47d\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"Very sad story\",\n            \"title\": \"Highway To Hell\",\n            \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n        },\n        {\n            \"content_id\": \"295ae414-7810-4293-9bd2-ab938af278f4\",\n            \"date\": \"17-12-2021 23:32:00\",\n            \"story\": \"Lambo Truck Vich Gedi Seedhi Hollywood Geet Desi Mundeyan De Sune Bollywoodl\",\n            \"title\": \"Brown Munde\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"25726eab-98da-4beb-942b-97140243dc54\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"Very bad story\",\n            \"title\": \"Highway To Bell\",\n            \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n        },\n        {\n            \"content_id\": \"2318a9be-1c06-463a-b3cc-a4f8fac64eac\",\n            \"date\": \"19-01-2022 23:32:00\",\n            \"story\": \"Dil Naal Laare Ni Tu Laun Waliye Dil Tera Jado Tuttuga Taan\",\n            \"title\": \"Excuses\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"206130c3-c701-4adb-9ba3-609c842150ad\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Get sorted content by likes",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sort_by\": \"likes\",\n    \"order\": \"desc\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURI}}/content_api/sorted",
+									"host": [
+										"{{BaseURI}}"
+									],
+									"path": [
+										"content_api",
+										"sorted"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.5"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 22 Jan 2022 16:11:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2004"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"content\": [\n        {\n            \"content_id\": \"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"But you didn't have to cut me off Make out like it never happened and that we were nothing And I don't even need your love But you treat me like a stranger and that feels so rough\",\n            \"title\": \"Gotye - Somebody that I used to know\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"a75aaad0-3dda-405f-b41b-426dc39bdbe9\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"779a1f24-5bfc-4d35-afb0-f9d6af87c47d\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"Very sad story\",\n            \"title\": \"Highway To Hell\",\n            \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n        },\n        {\n            \"content_id\": \"295ae414-7810-4293-9bd2-ab938af278f4\",\n            \"date\": \"17-12-2021 23:32:00\",\n            \"story\": \"Lambo Truck Vich Gedi Seedhi Hollywood Geet Desi Mundeyan De Sune Bollywoodl\",\n            \"title\": \"Brown Munde\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"25726eab-98da-4beb-942b-97140243dc54\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"Very bad story\",\n            \"title\": \"Highway To Bell\",\n            \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n        },\n        {\n            \"content_id\": \"2318a9be-1c06-463a-b3cc-a4f8fac64eac\",\n            \"date\": \"19-01-2022 23:32:00\",\n            \"story\": \"Dil Naal Laare Ni Tu Laun Waliye Dil Tera Jado Tuttuga Taan\",\n            \"title\": \"Excuses\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        },\n        {\n            \"content_id\": \"206130c3-c701-4adb-9ba3-609c842150ad\",\n            \"date\": \"21-01-2022 23:32:00\",\n            \"story\": \"This aint a song for the broken hearted\",\n            \"title\": \"Bon Jovi\",\n            \"user_id\": \"d788a3c1-a858-4313-92fc-1ce56c1bdf5e\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Interaction API",
+			"item": [
+				{
+					"name": "Get all reads",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURI}}/interaction_api/reads",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"interaction_api",
+								"reads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new read",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content_id\": \"a75aaad0-3dda-405f-b41b-426dc39bdbe9\",\n    \"user_id\": \"75487e7d-38e2-4688-8ba5-4a86af194303\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/interaction_api/reads",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"interaction_api",
+								"reads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all likes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURI}}/interaction_api/likes",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"interaction_api",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content_id\": \"7b65a25a-8c93-4dd7-9dc6-ed2ab215784a\",\n    \"user_id\": \"8446dabc-5b26-40a8-afb8-c3e56e7a989c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURI}}/interaction_api/likes",
+							"host": [
+								"{{BaseURI}}"
+							],
+							"path": [
+								"interaction_api",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
