@@ -12,15 +12,15 @@
   ],
   "tags": [
     {
-      "name": "User",
+      "name": "user",
       "description": "CRUD operations for users"
     },
     {
-      "name": "Content",
+      "name": "content",
       "description": "CRUD and sorting operations for content"
     },
     {
-      "name": "Interaction",
+      "name": "interaction",
       "description": "Interaction operations for content"
     }
   ],
