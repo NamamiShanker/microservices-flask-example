@@ -104,7 +104,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: nginx
-    # restart: always
+    restart: always
     ports:
       - "8080:80"
     depends_on:
