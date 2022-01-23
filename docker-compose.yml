@@ -86,6 +86,19 @@ services:
     networks:
       - default
 
+  swagger_ui:
+    image: swaggerapi/swagger-ui
+    container_name: swagger_ui
+    expose:
+      - "8080"
+    volumes:
+      - ./swagger/openapi.json:/openapi.json
+    environment:
+      - SWAGGER_JSON=/openapi.json
+      - BASE_URL=/docs
+    networks:
+      - default
+
   nginx:
     build:
       context: ./nginx
