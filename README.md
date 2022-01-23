@@ -19,4 +19,4 @@ https://drive.google.com/file/d/1eHNjso1a8TlXDUXtmVlv__bBI6P8CVA3/view
 ## HLD LLD
 Visit: https://drive.google.com/file/d/1YkiyqM7bGDho6GhQ6p1ISH2IjB-z_4Xu/view?usp=sharing
 
-Open the file with app.diagrams.net to view and understand the High Level and Low Level design of the APIs.
+Open the file with **app.diagrams.net** to view and understand the High Level and Low Level design of the APIs.
