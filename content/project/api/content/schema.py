@@ -22,13 +22,8 @@ class ContentUpdate(BaseContent):
     pass
 
 
-class SortedContent(Schema):
-    sort_by = fields.Str(validate=validate.OneOf(["date", "reads", "likes"]))
-    order = fields.Str(validate=validate.OneOf(["asc", "desc"]))
-
 all_contents_schema = ContentOut(many=True)
 create_content_schema = ContentCreate()
 update_content_schema = ContentUpdate()
 content_out_schema = ContentOut()
 create_bulk_content_schema = ContentCreate(many=True)
-sorted_content_schema = SortedContent()

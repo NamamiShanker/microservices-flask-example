@@ -21,7 +21,6 @@ from .schema import (
     create_content_schema,
     content_out_schema,
     update_content_schema,
-    sorted_content_schema
 )
 
 from project.lib import BadRequest, ServerError
@@ -131,13 +130,15 @@ def ingest_csv():
         return "File uploaded successfully", 200
 
 def get_sorted_contents():
+    sort_by = request.args.get('sort_by')
+    order = request.args.get('order')
+    if sort_by not in ['date', 'reads', 'likes'] or order not in ['asc', 'desc']:
+        raise BadRequest('Invalid value of query parameters', 400)
     try:
-        data = request.get_json()
-        u = sorted_content_schema.load(data)
-        if u["sort_by"] == 'date':
-            content = get_sorted_content_by_date(u["order"])
+        if sort_by == 'date':
+            content = get_sorted_content_by_date(order)
         else:
-            content = get_sorted_content_by_reads_or_likes(u["sort_by"], u["order"])
+            content = get_sorted_content_by_reads_or_likes(sort_by, order)
         resp = all_contents_schema.dump(content)
     except ValidationError as err:
         raise BadRequest(message=err.messages, status=422)
@@ -164,5 +165,5 @@ contents_blueprint.add_url_rule(
 )
 
 contents_blueprint.add_url_rule(
-    "/sorted", view_func=get_sorted_contents, methods=["POST"]
+    "/sorted", view_func=get_sorted_contents, methods=["GET"]
 )
