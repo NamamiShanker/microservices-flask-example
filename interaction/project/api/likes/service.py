@@ -13,7 +13,6 @@ def get_user_likes_by_content_id(content_id: UUID):
 	return [like.user_id for like in likes]
 
 def get_user_likes_by_content_id_bulk(content_ids: List[UUID]):
-	print("Getting content ids:", content_ids)
 	return {
 	    str(content_id): get_user_likes_by_content_id(content_id)
 	    for content_id in content_ids

@@ -13,7 +13,6 @@ def get_user_reads_by_content_id(content_id: UUID):
 	return [read.user_id for read in reads]
 
 def get_user_reads_by_content_id_bulk(content_ids: List[UUID]):
-	print("Getting content ids:", content_ids)
 	return {
 	    str(content_id): get_user_reads_by_content_id(content_id)
 	    for content_id in content_ids
