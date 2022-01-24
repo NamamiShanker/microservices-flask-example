@@ -75,7 +75,8 @@
           },
           "date": {
             "type": "string",
-            "format": "date-time"
+            "pattern": "([0-9]{2})-(?:[0-9]{2})-([0-9]{4} [0-9]{2}:[0-9]{2}:[0-9]{2})",
+            "example": "01-01-2020 00:00:00"
           },
           "story": {
             "type": "string"
@@ -537,20 +538,33 @@
       }
     },
     "/content_api/sorted": {
-      "post": {
+      "get": {
         "summary": "Get content sorted by a field",
         "tags": [
           "content"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SortRequest"
-              }
-            }
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sort_by",
+            "schema": {
+              "type": "string",
+              "enum": ["date", "reads", "likes"]
+            },
+            "required": true,
+            "description": "Sort by date, reads or likes"
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "type": "string",
+              "enum": ["asc", "desc"]
+            },
+            "required": true,
+            "description": "Sort in descending or ascending order"
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "The content was sorted",
