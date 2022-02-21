@@ -13,7 +13,6 @@ https://drive.google.com/file/d/1eHNjso1a8TlXDUXtmVlv__bBI6P8CVA3/view
 ## Information
 1. Use the *test.csv* file included in helpers folder to check data ingestion process.
 2. Use the postman collection in helpers folder to test the API.
-3. The database is already filled with dummy data.
 
 
 ## HLD LLD
